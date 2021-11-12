@@ -11,17 +11,17 @@ app = Flask(__name__)
 def home_page():  # put application's code here
     return "<h1>Countries API</h1><p>This site is a prototype API for countries information.</p>"
 
-# localhost/api/countries/show_all
+# localhost/countries_api/countries
 # A route to return all of the available entries in our catalog.
-@app.route('/api/countries/show_all', methods=['GET'])
+@app.route('/countries_api/all_countries', methods=['GET'])
 def api_all():
     return jsonify(countries_data)
 
-# localhost/api/countries/capital?country_code=TR
-# 127.0.0.1:5000/api/countries/capital?country_code=TR
+# localhost/countries_api/countries?country_code=TR
+# 127.0.0.1:5000/countries_api/countries?country_code=TR
 # Finding Specific Resources
-@app.route('/api/countries', methods=['GET'])
-def api_id():
+@app.route('/countries_api/countries', methods=['GET'])
+def api_country_code():
     # Check if an ID was provided as part of the URL.
     # If ID is provided, assign it to a variable.
     # If no ID is provided, display an error in the browser.
@@ -43,5 +43,8 @@ def api_id():
     # Python dictionaries to the JSON format.
     return jsonify(results)
 
+    # Use the jsonify function from Flask to convert our list of
+    # Python dictionaries to the JSON format.
+    return jsonify(results)
 if __name__ == '__main__':
     app.run()
